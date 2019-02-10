@@ -3,13 +3,23 @@
   "name": "Zim's Design Shop",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "./ZD png/ZD64.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    },
+    {
+      "src": "./ZD png/ZD192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./ZD png/ZD512.png",
+      "sizes": "512x512",
+      "type": "image/png"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
+  "theme_color": "#333333",
   "background_color": "#ffffff"
 }
