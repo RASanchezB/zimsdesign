@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import { Card } from "reactstrap";
+import Header from "./Components/Header";
 import "./App.css";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
+        <Header />
         <p>
           Quis ea irure fugiat commodo id duis do consectetur veniam est. Quis reprehenderit laborum
           id dolore eiusmod duis quis non enim do id labore reprehenderit. Veniam velit nisi sunt
