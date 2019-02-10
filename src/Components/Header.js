@@ -18,7 +18,7 @@ export default class Header extends React.Component {
   render() {
     return (
       <div>
-        <Navbar color="primary" dark fixed="top" expand="md">
+        <Navbar color="primary" dark expand="md">
           <NavbarBrand href="/">
             <img className="brand-logo" src={require("../ZD1000.png")} alt="Logo" />
           </NavbarBrand>

@@ -1,8 +1,20 @@
 .App {
   text-align: center;
-  background-color: #333333;
 }
 .brand-logo {
   width: 75px;
   height: auto;
+}
+.vertical-align {
+  display: flex;
+  align-items: center;
+}
+
+.titulo {
+  color: black;
+  font-size: 18px;
+}
+.texto-gris {
+  color: gray;
+  font-size: 12px;
 }
