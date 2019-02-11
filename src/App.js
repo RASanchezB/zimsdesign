@@ -9,15 +9,11 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <div>
+        <div style={{ backgroundColor: "#CDCDCD" }}>
           <Header />
           <Switch>
-            <Route to="/" exact>
-              <Productos />
-            </Route>
-            <Route to="">
-              <Error404 />
-            </Route>
+            <Route path="/" component={Productos} exact />
+            <Route component={Error404} />
           </Switch>
         </div>
       </BrowserRouter>
