@@ -12,9 +12,13 @@
 
 .titulo {
   color: black;
-  font-size: 18px;
+  font-size: 2em;
 }
 .texto-gris {
   color: gray;
-  font-size: 12px;
+  font-size: 1em;
+}
+
+.precio {
+  font-size: 1.5em;
 }
