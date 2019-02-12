@@ -2,6 +2,21 @@ import React, { Component } from "react";
 import { ListGroupItem, Row, Col, Container } from "reactstrap";
 import "../App.css";
 class MenuItem extends Component {
+  detectmob = () => {
+    if (
+      navigator.userAgent.match(/Android/i) ||
+      navigator.userAgent.match(/webOS/i) ||
+      navigator.userAgent.match(/iPhone/i) ||
+      navigator.userAgent.match(/iPad/i) ||
+      navigator.userAgent.match(/iPod/i) ||
+      navigator.userAgent.match(/BlackBerry/i) ||
+      navigator.userAgent.match(/Windows Phone/i)
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  };
   render() {
     return (
       <ListGroupItem>
@@ -9,7 +24,7 @@ class MenuItem extends Component {
           <Row className="vertical-align">
             <Col xs="6">
               <img
-                style={{ width: "75%", height: "auto" }}
+                style={{ width: this.detectmob() ? "100%" : "40%", height: "auto" }}
                 src={require("../senora.jpg")}
                 alt="producto"
               />
