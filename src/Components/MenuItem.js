@@ -8,7 +8,11 @@ class MenuItem extends Component {
         <Container>
           <Row className="vertical-align">
             <Col xs="6">
-              <img alt="producto" />
+              <img
+                style={{ width: "75%", height: "auto" }}
+                src={require("../senora.jpg")}
+                alt="producto"
+              />
             </Col>
             <Col xs="6">
               <p className="titulo">{this.props.nombre}</p>

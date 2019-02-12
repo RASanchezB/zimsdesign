@@ -33,6 +33,11 @@ export default class Header extends React.Component {
               <NavItem>
                 <NavLink href="/productos">Productos</NavLink>
               </NavItem>
+              <NavItem>
+                <NavLink href="/carrito">
+                  <img src={require("../shopping-cart.png")} alt="carrito" />
+                </NavLink>
+              </NavItem>
             </Nav>
           </Collapse>
         </Navbar>
