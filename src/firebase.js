@@ -1,5 +1,5 @@
 import firebase from "firebase";
-
+let x = 0;
 var config = {
   apiKey: "AIzaSyCioIfLPdSgZb8MSGZ1T0TQaS-XR6QGrys",
   authDomain: "zims-design.firebaseapp.com",
