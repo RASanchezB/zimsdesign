@@ -5,8 +5,8 @@ import Carrito from "./Views/Carrito";
 import Error404 from "./Views/Error404";
 import Header from "./Components/Header";
 import Productos from "./Views/Productos";
-import "./App.css";
 import firebase from "./firebase.js";
+import "./App.css";
 class App extends Component {
   constructor(props) {
     super(props);

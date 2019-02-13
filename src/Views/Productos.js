@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { ListGroup } from "reactstrap";
-import * as firebase from "firebase";
+import firebase from "../firebase.js";
 import MenuItem from "../Components/MenuItem";
 class Productos extends Component {
   constructor(props) {
