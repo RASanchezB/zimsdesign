@@ -1,5 +1,7 @@
 import React from "react";
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from "reactstrap";
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem } from "reactstrap";
+import { NavLink as NL } from "reactstrap";
+import { NavLink } from "react-router-dom";
 import "../App.css";
 export default class Header extends React.Component {
   constructor(props) {
@@ -26,16 +28,22 @@ export default class Header extends React.Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink target="_blank" href="https://behance.net/jimendoza">
+                <NL target="_blank" href="https://behance.net/jimendoza">
                   Portafolio
+                </NL>
+              </NavItem>
+              <NavItem>
+                <NavLink className="nav-link" to="/productos">
+                  Productos
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/productos">Productos</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="/carrito">
-                  <img src={require("../shopping-cart.png")} alt="carrito" />
+                <NavLink className="nav-link" to="/carrito">
+                  <img
+                    src={require("../shopping-cart.png")}
+                    style={{ width: "24px" }}
+                    alt="carrito"
+                  />
                 </NavLink>
               </NavItem>
             </Nav>

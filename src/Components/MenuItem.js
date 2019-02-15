@@ -1,11 +1,7 @@
 import React, { Component } from "react";
 import { ListGroupItem, Row, Col, Container, Button } from "reactstrap";
-import { connect } from "react-redux";
 import "../App.css";
 class MenuItem extends Component {
-  constructor(props) {
-    super(props);
-  }
   detectmob = () => {
     if (
       navigator.userAgent.match(/Android/i) ||

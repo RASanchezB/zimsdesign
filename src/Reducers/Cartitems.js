@@ -9,7 +9,8 @@ const Cartitems = (state = [], action) => {
         return book._id !== action.payload._id;
       });
       return afterDelete;
+    default:
+      return state;
   }
-  return state;
 };
 export default Cartitems;
