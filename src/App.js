@@ -6,11 +6,13 @@ import Error404 from "./Views/Error404";
 import Header from "./Components/Header";
 import Productos from "./Views/Productos";
 import "./App.css";
+
 class App extends Component {
   render() {
+    console.log(this.props);
     return (
       <BrowserRouter>
-        <div style={{ backgroundColor: "#CDCDCD" }}>
+        <div>
           <Header />
           <Switch>
             <Route path="/" component={Home} exact />

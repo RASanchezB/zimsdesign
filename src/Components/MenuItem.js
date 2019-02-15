@@ -1,7 +1,11 @@
 import React, { Component } from "react";
-import { ListGroupItem, Row, Col, Container } from "reactstrap";
+import { ListGroupItem, Row, Col, Container, Button } from "reactstrap";
+import { connect } from "react-redux";
 import "../App.css";
 class MenuItem extends Component {
+  constructor(props) {
+    super(props);
+  }
   detectmob = () => {
     if (
       navigator.userAgent.match(/Android/i) ||
@@ -20,6 +24,7 @@ class MenuItem extends Component {
   render() {
     return (
       <ListGroupItem>
+        {this.props.id}
         <Container>
           <Row className="vertical-align">
             <Col xs="6">
@@ -34,7 +39,12 @@ class MenuItem extends Component {
               <p className="texto-gris">
                 Por {this.props.creador} | {this.props.fecha}
               </p>
-              <p className="precio">L. {this.props.precio}</p>
+              <p className="precio">
+                L. {this.props.precio}{" "}
+                <Button onClick={prodcut => this.props.onClick(this.props.id)}>
+                  Agregar al carrito
+                </Button>
+              </p>
             </Col>
           </Row>
         </Container>
