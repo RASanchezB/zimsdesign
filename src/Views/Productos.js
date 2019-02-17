@@ -18,20 +18,12 @@ class Productos extends Component {
           productos.push(child.exportVal());
         });
       });
-      console.log("descargando :v");
       for (let i = 0; i < productos.length; i++) {
         let image = firebase.storage().ref(productos[i].foto);
-        console.log(image);
-        await image
-          .getDownloadURL()
-          .then(url => {
-            productos[i].url = url;
-          })
-          .catch(error => {
-            console.log(error);
-          });
+        await image.getDownloadURL().then(url => {
+          productos[i].url = url;
+        });
       }
-      console.log(productos);
 
       this.setState({ productos });
     };

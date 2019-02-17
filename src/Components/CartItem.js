@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { ListGroupItem, Row, Col, Container, Button } from "reactstrap";
 import "../App.css";
-class MenuItem extends Component {
+class CartItem extends Component {
   detectmob = () => {
     if (
       navigator.userAgent.match(/Android/i) ||
@@ -33,9 +33,9 @@ class MenuItem extends Component {
               <p className="titulo">{this.props.nombre}</p>
               <p className="texto-gris">Por {this.props.creador}</p>
               <p className="precio">
-                L. {this.props.precio}{" "}
+                L. {this.props.precio}
                 <Button onClick={prodcut => this.props.onClick(this.props.id)}>
-                  Agregar al carrito
+                  Eliminar Del Carrito
                 </Button>
               </p>
             </Col>
@@ -46,4 +46,4 @@ class MenuItem extends Component {
   }
 }
 
-export default MenuItem;
+export default CartItem;
