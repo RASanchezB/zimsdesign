@@ -9,15 +9,14 @@ class Carrito extends Component {
     this.state = { productos: [] };
     this.getprods = async () => {
       let rootRef = firebase.database().ref();
+      let urlRef = rootRef.child("productos/");
       let productos = [];
-      for (let i = 0; i < this.props.carrito.length; i++) {
-        let urlRef = rootRef.child("productos/" + this.props.carrito[i]);
-        await urlRef.once("value", snapshot => {
-          productos.push(snapshot.exportVal());
+      await urlRef.once("value", function(snapshot) {
+        snapshot.forEach(function(child) {
+          productos.push(child.exportVal());
         });
-      }
+      });
       for (let i = 0; i < productos.length; i++) {
-        console.log(productos[i]);
         let image = firebase.storage().ref(productos[i].foto);
         await image.getDownloadURL().then(url => {
           productos[i].url = url;
@@ -34,6 +33,7 @@ class Carrito extends Component {
     return (
       <div>
         {console.log(this.props.carrito)}
+        {console.log(this.state.productos)}
         <div className="align-items-center h-100">
           <div className="col-9 mx-auto">
             {this.state.productos.length === 0 ? (
@@ -45,8 +45,10 @@ class Carrito extends Component {
               </div>
             ) : (
               <ListGroup>
-                {this.state.productos.map(item => {
-                  console.log(item);
+                {this.props.carrito.map(index => {
+                  console.log(index);
+                  console.log(this.state.productos);
+                  let item = this.state.productos[index];
                   return (
                     <CartItem
                       nombre={item.nombre}
@@ -54,7 +56,7 @@ class Carrito extends Component {
                       creador={item.creador}
                       precio={item.precio}
                       foto={item.url}
-                      id={this.props.carrito.indexOf(item)}
+                      id={index}
                       onClick={this.props.removeItemFromCart}
                     />
                   );
