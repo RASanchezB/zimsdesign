@@ -20,13 +20,12 @@ class MenuItem extends Component {
   render() {
     return (
       <ListGroupItem>
-        {this.props.id}
         <Container>
           <Row className="vertical-align">
             <Col xs="6">
               <img
                 style={{ width: this.detectmob() ? "100%" : "40%", height: "auto" }}
-                src={require("../senora.jpg")}
+                src={this.props.foto}
                 alt="producto"
               />
             </Col>

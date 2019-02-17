@@ -1,7 +1,6 @@
 const Cartitems = (state = [], action) => {
   switch (action.type) {
     case "ADD_TO_CART":
-      console.log(action);
       return { carrito: [...state.carrito, action.producto] };
     case "REMOVE_FROM_CART":
       //return state.filter(cartItem => cartItem.id !== action.payload.id);

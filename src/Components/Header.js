@@ -1,6 +1,13 @@
 import React from "react";
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem } from "reactstrap";
-import { NavLink as NL } from "reactstrap";
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink as NL,
+} from "reactstrap";
 import { NavLink } from "react-router-dom";
 import "../App.css";
 export default class Header extends React.Component {

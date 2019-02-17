@@ -10,14 +10,29 @@ class Productos extends Component {
     this.state = { productos: [] };
     this.productos = [];
     this.getprods = async () => {
-      var rootRef = firebase.database().ref();
-      var urlRef = rootRef.child("Productos/");
+      let rootRef = firebase.database().ref();
+      let urlRef = rootRef.child("productos/");
       let productos = [];
       await urlRef.once("value", function(snapshot) {
         snapshot.forEach(function(child) {
           productos.push(child.exportVal());
         });
       });
+      console.log("descargando :v");
+      for (let i = 0; i < productos.length; i++) {
+        let image = firebase.storage().ref(productos[i].foto);
+        console.log(image);
+        await image
+          .getDownloadURL()
+          .then(url => {
+            productos[i].url = url;
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      }
+      console.log(productos);
+
       this.setState({ productos });
     };
   }
@@ -59,6 +74,7 @@ class Productos extends Component {
                       fecha={item.fecha}
                       creador={item.creador}
                       precio={item.precio}
+                      foto={item.url}
                       id={this.state.productos.indexOf(item)}
                       onClick={this.props.addItemToCart}
                     />
