@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import { ListGroup, Jumbotron } from "reactstrap";
+import { ListGroup, Jumbotron, Button } from "reactstrap";
 import { connect } from "react-redux";
 import firebase from "../firebase";
 import CartItem from "../Components/CartItem";
 class Carrito extends Component {
   constructor(props) {
     super(props);
-    this.state = { productos: [] };
+    this.state = { productos: [], total: 0 };
     this.getprods = async () => {
       let rootRef = firebase.database().ref();
       let urlRef = rootRef.child("productos/");
@@ -22,8 +22,12 @@ class Carrito extends Component {
           productos[i].url = url;
         });
       }
-
-      this.setState({ productos });
+      let total = 0;
+      for (let i = 0; i < this.props.carrito.length; i++) {
+        total += productos[this.props.carrito[i]].precio;
+      }
+      await this.setState({ productos });
+      await this.setState({ total });
     };
   }
   componentWillMount() {
@@ -32,8 +36,6 @@ class Carrito extends Component {
   render() {
     return (
       <div>
-        {console.log(this.props.carrito)}
-        {console.log(this.state.productos)}
         <div className="align-items-center h-100">
           <div className="col-9 mx-auto">
             {this.state.productos.length === 0 ? (
@@ -46,8 +48,6 @@ class Carrito extends Component {
             ) : (
               <ListGroup>
                 {this.props.carrito.map(index => {
-                  console.log(index);
-                  console.log(this.state.productos);
                   let item = this.state.productos[index];
                   return (
                     <CartItem
@@ -63,6 +63,12 @@ class Carrito extends Component {
                 })}
               </ListGroup>
             )}
+            <Jumbotron>
+              <h1 className="display-3">Su total es: {this.state.total}</h1>
+              <p className="lead">
+                <Button color="secondary">Cancelar</Button>
+              </p>
+            </Jumbotron>
           </div>
         </div>
       </div>
