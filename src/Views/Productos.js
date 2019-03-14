@@ -7,7 +7,7 @@ import MenuItem from "../Components/MenuItem";
 class Productos extends Component {
   constructor(props) {
     super(props);
-    this.state = { productos: [] };
+    this.state = { productos: [], query: "" };
     this.productos = [];
     this.getprods = async () => {
       let rootRef = firebase.database().ref();
@@ -27,9 +27,20 @@ class Productos extends Component {
 
       this.setState({ productos });
     };
+    this.handleclick = this.handleclick.bind(this);
   }
   componentWillMount() {
     this.getprods();
+  }
+  handleclick() {
+    let aux = [];
+    for (let i = 0; i < this.state.productos.length; i++) {
+      console.log(this.state.productos[i].nombre.includes(this.state.query));
+      if (this.state.productos[i].nombre.includes(this.state.query)) {
+        aux.push(this.state.productos[i]);
+      }
+    }
+    this.setState({ productos: aux });
   }
   render() {
     return (
@@ -51,10 +62,11 @@ class Productos extends Component {
                           type="search"
                           placeholder="Busqueda"
                           aria-label="Busqueda"
+                          onChange={e => this.setState({ query: e.target.value })}
                         />
                       </Col>
                       <Col xs="auto">
-                        <Button>Buscar</Button>
+                        <Button onClick={this.handleclick}>Buscar</Button>
                       </Col>
                     </Row>
                   </FormGroup>
