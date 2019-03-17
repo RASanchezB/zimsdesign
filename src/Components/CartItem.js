@@ -18,30 +18,31 @@ class CartItem extends Component {
     }
   };
   render() {
+    console.log(this.props.foto);
     return (
-      <ListGroupItem>
-        <Container>
+      <Container>
+        <ListGroupItem>
           <Row className="vertical-align">
             <Col xs="6">
               <img
                 style={{ width: this.detectmob() ? "100%" : "40%", height: "auto" }}
-                src={this.props.foto}
+                src={this.props.item.foto}
                 alt="producto"
               />
             </Col>
             <Col xs="6">
-              <p className="titulo">{this.props.nombre}</p>
-              <p className="texto-gris">Por {this.props.creador}</p>
+              <p className="titulo">{this.props.item.nombre}</p>
+              <p className="texto-gris">Por {this.props.item.creador}</p>
               <p className="precio">
-                L. {this.props.precio}
-                <Button onClick={prodcut => this.props.onClick(this.props.id)}>
+                L. {this.props.item.precio}
+                <Button onClick={prodcut => this.props.onClick(this.props.item)}>
                   Eliminar Del Carrito
                 </Button>
               </p>
             </Col>
           </Row>
-        </Container>
-      </ListGroupItem>
+        </ListGroupItem>
+      </Container>
     );
   }
 }

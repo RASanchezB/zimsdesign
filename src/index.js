@@ -9,11 +9,31 @@ import Cartitems from "./Reducers/Cartitems";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.css";
 
+function saveToLocalStorage(state) {
+  try {
+    const serializedState = JSON.stringify(state);
+    localStorage.setItem("state", serializedState);
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+function loadFromLocalStorage() {
+  try {
+    const serializedState = localStorage.getItem("state");
+    if (serializedState === null) return undefined;
+    return JSON.parse(serializedState);
+  } catch (e) {
+    console.log(e);
+    return undefined;
+  }
+}
 const store = createStore(
   Cartitems,
-  { carrito: [] },
+  loadFromLocalStorage(),
   window.devToolsExtension && window.devToolsExtension()
 );
+store.subscribe(() => saveToLocalStorage(store.getState()));
 
 ReactDOM.render(
   <Provider store={store}>
@@ -25,7 +45,3 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: http://bit.ly/CRA-PWA
 serviceWorker.register();
-if (window.location.protocol !== "https:") {
-  window.location =
-    "https://" + window.location.hostname + window.location.pathname + window.location.hash;
-}

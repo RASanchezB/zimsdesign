@@ -1,10 +1,12 @@
 const Cartitems = (state = [], action) => {
   switch (action.type) {
     case "ADD_TO_CART":
-      return { carrito: [...state.carrito, action.producto] };
+      return [...state, action.producto];
     case "REMOVE_FROM_CART":
-      state.carrito.splice(state.carrito.indexOf(action.producto), 1);
+      state.splice(state.indexOf(action.producto), 1);
       return state;
+    case "CLEAR_CART":
+      return [];
     default:
       return state;
   }
